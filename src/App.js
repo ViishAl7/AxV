@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { createRoot } from "react-dom/client";
 
 // ── Apple Liquid Glass Design - Premium Color Palettes ──
 const meshConfigs = [
@@ -166,23 +165,7 @@ function FloatingHearts({ color }) {
   );
 }
 
-// ── Hooks ──
-function useCountUp(to, duration, delay) {
-  const [v, setV] = useState(0);
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const start = performance.now();
-      const step = (now) => {
-        const p = Math.min((now - start) / duration, 1);
-        setV(Math.round((1 - Math.pow(1 - p, 3)) * to));
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }, delay);
-    return () => clearTimeout(t);
-  }, [to, duration, delay]);
-  return v;
-}
+
 
 function useTypewriter(text, started, speed = 14) {
   const [idx, setIdx] = useState(0);
